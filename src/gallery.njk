@@ -1,0 +1,445 @@
+---
+title: Gallery
+layout: 'base.njk'
+---
+
+
+<!-- Header Start -->
+<div class="container-fluid bg-primary py-5 mb-5 page-header">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 text-center">
+                <h1 class="display-3 text-white animated slideInDown" data-i18n="gallery.title">Gallery</h1>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb justify-content-center">
+                        <li class="breadcrumb-item"><a class="text-white" href="../index.html" data-i18n="breadcrumb.home">Home</a></li>
+                        <li class="breadcrumb-item"><a class="text-white" href="/gallery/" data-i18n="breadcrumb.pages">Pages</a></li>
+                        <li class="breadcrumb-item text-white active" aria-current="page" data-i18n="breadcrumb.gallery">Gallery</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Header End -->
+
+<!-- Gallery Section Start -->
+<div class="container py-5">
+    <h1 class="text-center mb-4" data-i18n="gallery.our_gallery">Our Gallery</h1>
+    <div class="row g-4 gallery">
+        <div class="col-lg-4 col-md-6">
+            <img src="../img/mpc.jpg" data-i18n-alt="gallery.image1" alt="MPC Classroom" class="img-fluid rounded shadow" onclick="openModal(0)">
+        </div>
+        <div class="col-lg-4 col-md-6">
+            <img src="../img/pcb.jpg" data-i18n-alt="gallery.image2" alt="PCB Classroom" class="img-fluid rounded shadow" onclick="openModal(1)">
+        </div>
+        <div class="col-lg-4 col-md-6">
+            <img src="../img/mcb.jpg" data-i18n-alt="gallery.image3" alt="MCB Classroom" class="img-fluid rounded shadow" onclick="openModal(2)">
+        </div>
+        <div class="col-lg-4 col-md-6">
+            <img src="../img/ol.jpg" data-i18n-alt="gallery.image4" alt="Ordinary Level" class="img-fluid rounded shadow" onclick="openModal(3)">
+        </div>
+        <div class="col-lg-4 col-md-6">
+            <img src="../img/hl.jpg" data-i18n-alt="gallery.image5" alt="Highlights" class="img-fluid rounded shadow" onclick="openModal(4)">
+        </div>
+        <div class="col-lg-4 col-md-6">
+            <img src="../img/mn.jpg" data-i18n-alt="gallery.image6" alt="Main Building" class="img-fluid rounded shadow" onclick="openModal(5)">
+        </div>
+    </div>
+</div>
+<!-- Gallery Section End -->
+
+    <!-- Modal Start -->
+    <div id="imageModal" class="modal fade" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img id="modalImage" class="img-fluid" src="">
+                </div>
+                <div class="modal-footer d-flex justify-content-between">
+                    <button class="btn btn-secondary" onclick="prevImage()">Previous</button>
+                    <button class="btn btn-secondary" onclick="nextImage()">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal End -->
+
+
+    <script>
+        const images = [
+      "../img/mpc.jpg",
+          "../img/pcb.jpg",
+            "../img/mcb.jpg",
+            "../img/ol.jpg",
+            "../img/hl.jpg",
+            "../img/mn.jpg"        ];
+        let currentIndex = 0;
+
+        function openModal(index) {
+            currentIndex = index;
+            document.getElementById("modalImage").src = images[currentIndex];
+            new bootstrap.Modal(document.getElementById("imageModal")).show();
+        }
+
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            document.getElementById("modalImage").src = images[currentIndex];
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            document.getElementById("modalImage").src = images[currentIndex];
+        }
+    </script>
+
+
+    <!-- Bootstrap Bundle with Popper -->
+
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i><span data-i18n="top">Top</span></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+        <!-- Language Translation Script -->
+        <script>
+            // Language translations
+            const translations = {
+                en: {
+                    // Navigation
+                    "home": "Home",
+                    "about": "About",
+                    "login": "Login",
+                    "pages": "Pages",
+                    "our_team": "Our Team",
+                    "testimonial": "Testimonial",
+                    "gallery": "Gallery",
+                    "resources": "Notes and Exercises",
+                    "news": "News",
+                    "appointment": "Request appointment",
+                    "contact": "Contact",
+                    "join_now": "Join Now",
+                    "gallery.title": "Gallery",
+                    "Online lessons": "Online lessons",
+            "breadcrumb.home": "Home",
+            "breadcrumb.pages": "Pages",
+            "breadcrumb.gallery": "Gallery",
+            "gallery.our_gallery": "Our Gallery",
+            "gallery.image1": "MPC Classroom",
+            "gallery.image2": "PCB Classroom",
+            "gallery.image3": "MCB Classroom",
+            "gallery.image4": "Ordinary Level",
+            "gallery.image5": "Highlights",
+            "gallery.image6": "Main Building",
+                    
+                    // Carousel
+                    "best_education": "Best education",
+                    "best_performing_school": "The Best performing secondary school",
+                    "welcome_message": "Welcome to College Immaculee Conception-save Where we emphasize critical thinking, creativity, and leadership skills.",
+                    "read_more": "Read More",
+                    "best_online_courses": "Best Online Courses",
+                    "get_educated_online": "Get Educated Online From Your Home",
+                    "holiday_packages": "Student Enroll your studies in Holidays through Our top rated The Holiday Packages we have prepared for you.",
+                    
+                    // Services
+                    "skilled_teachers": "Skilled Teachers",
+                    "skilled_teachers_desc": "Who will accompany you in your Academic journey and together your achieve grearter deeds.",
+                    "online_classes": "Online Classes",
+                    "online_classes_desc": "Standardized activities which will enrich you with not only problem solving abilities but also brainstorming traits.",
+                    "project_learning": "Projects Based Learning",
+                    "project_learning_desc": "which allows you to put in practice what you learn in our classes in action through student developed project activities.",
+                    "book_library": "Book Library",
+                    "book_library_desc": "Which is rich with Knowledge of many centuries, modern and antiquity which will assist you in your class activities and your researches.",
+                    
+                    // About
+                    "about_us": "About Us",
+                    "welcome_title": "Welcome to College Immaculee Conception-save",
+                    "about_desc1": "College Immaculee Conception is dedicated to fostering academic excellence and personal growth in a nurturing environment.",
+                    "about_desc2": "Our mission is to provide quality education rooted in Catholic values, preparing students for future challenges. Through:",
+                    "international_cert": "International Certificate",
+                    "skilled_instructors": "Skilled Instructors",
+                    
+                    // Categories
+                    "categories": "Categories",
+                    "classes": "Classes",
+                    "mpc_desc": "Mathematics,Physics,Computer science",
+                    "mce_desc": "Mathematics,Computer science,Economics",
+                    "pcb_desc": "Physics,Chemistry,Biology",
+                    "mcb_desc": "Mathematics,Chemistry,Biology",
+                    "ordinary_level": "Ordinary Level",
+                    "senior_classes": "Senior 1, Senior 2, Senior 3.",
+                    
+                    // Team
+                    "staff": "Staff",
+                    "leading_staff": "Leading Staff",
+                    "head_mistress": "Head Mistress",
+                    "dean_studies": "Dean of Studies",
+                    "dean_discipline": "Dean of Discipline",
+                    "bursar": "Bursar",
+                    
+                    // Testimonial
+                    "our_students_say": "Our Students Say!",
+                    "student": "Student",
+                    "head_boy": "Head Boy",
+                    "head_girl": "Head Girl",
+                    "testimonial1": "\"My school has been such a wonderful place for me to grow academically and personally. The teachers are always there to support me, whether I need help with my studies or just want to talk about something. I've had the chance to get involved in so many extracurricular activities, like drama and the science club, which has really helped me discover my passions. I'm proud to be part of a community that feels like a second family.\"",
+                    "testimonial2": "\"Being Head Boy is a huge honor, and it has given me a unique perspective on the school. I see first-hand how much effort the staff put into creating a safe, inclusive, and engaging environment for us students. We have a strong sense of community here it's not just about academics; it's about building character and leadership skills. As Head Boy, I have had the privilege of representing my fellow students, listening to their ideas, and working with the staff to make our school even better. I'm proud to be part of a school that fosters not only excellence but also kindness, respect, and integrity. It's a place where everyone's voice matters.\"",
+                    "testimonial3": "\"What I love most about my school is the sense of belonging. No matter what you're interested in, there's always a place for you here. Whether you're into sports, art, or music, there's a group for everyone. I've had amazing opportunities to compete in athletics and represent the school, and it's taught me a lot about teamwork and perseverance. I feel like the school genuinely cares about each student's success, not just in the classroom but in life.\"",
+                    "testimonial4": "\"Being Head Girl is an experience I will never forget. It's given me the chance to grow both as a leader and as a person. Our school is amazing because it doesn't just focus on academic success but also encourages us to be well-rounded individuals. The teachers are so supportive and always go above and beyond to help us succeed. I have learned so much about leadership, teamwork, and responsibility through my role, and I feel proud to represent a school that values kindness, ambition, and inclusivity. It truly feels like a family here, and I'm grateful to be part of it.\"",
+                    
+                    // Footer
+                    "quick_link": "Quick Link",
+                    "contact_us": "Contact Us",
+                    "address": "Rwanda, South, Gisagara",
+                    "all_rights_reserved": "All Rights Reserved",
+                    "help": "Help",
+                    "top": "Top"
+                },
+                fr: {
+                    // Navigation
+                    "home": "Accueil",
+                    "about": "Àpropos",
+                    "login": "Connexion",
+                    "pages": "Pages",
+                    "our_team": "Notre_équipe",
+                    "testimonial": "Témoignage",
+                    "gallery": "Galerie",
+                    "resources": "Notes et exercices",
+                    "news": "Nouvelles",
+                    "appointment": "Demande de rendez-vous",
+                    "contact": "Contact",
+                    "join_now": "Inscrivez-vous maintenant",
+                    "gallery.title": "Galerie",
+                    "Online lessons": "Cours en ligne",
+            "breadcrumb.home": "Accueil",
+            "breadcrumb.pages": "Pages",
+            "breadcrumb.gallery": "Galerie",
+            "gallery.our_gallery": "Notre Galerie",
+            "gallery.image1": "Salle de classe MPC",
+            "gallery.image2": "Salle de classe PCB",
+            "gallery.image3": "Salle de classe MCB",
+            "gallery.image4": "Niveau Ordinaire",
+            "gallery.image5": "Points Forts",
+            "gallery.image6": "Bâtiment Principal",
+                    
+                    // Carousel
+                    "best_education": "Meilleure_éducation",
+                    "best_performing_school": "L'école secondaire la plus performante",
+                    "welcome_message": "Bienvenue au Collège Immaculée Conception-save où nous mettons l'accent sur la pensée critique, la créativité et les compétences en leadership.",
+                    "read_more": "Lire la suite",
+                    "best_online_courses": "Meilleurs cours en ligne",
+                    "get_educated_online": "Informez-vous en ligne depuis chez vous",
+                    "holiday_packages": "Inscrivez-vous à nos programmes d'études de vacances grâce à nos forfaits de vacances les mieux notés que nous avons préparés pour vous.",
+                    
+                    // Services
+                    "skilled_teachers": "Enseignants qualifiés",
+                    "skilled_teachers_desc": "Qui vous accompagnera dans votre parcours académique et réalisera ensemble de plus grandes actions.",
+                    "online_classes": "Cours en ligne",
+                    "online_classes_desc": "Des activités standardisées qui vous enrichiront de vos capacités de résolution de problèmes et de vos compétences de brainstorming.",
+                    "project_learning": "Apprentissage par projet",
+                    "project_learning_desc": "Mettez en pratique ce que vous apprenez grâce à des activités de projet développées par les étudiants.",
+                    "book_library": "Bibliothèque de livres",
+                    "book_library_desc": "Riche de connaissances acquises au fil des siècles pour vous aider dans vos activités de classe et vos recherches.",
+                    
+                    // About
+                    "about_us": "À propos de nous",
+                    "welcome_title": "Bienvenue au Collège Immaculée Conception-save",
+                    "about_desc1": "Le Collège Immaculée Conception se consacre à favoriser l’excellence académique et la croissance personnelle dans un environnement stimulant.",
+                    "about_desc2": "Notre mission est de fournir une éducation de qualité ancrée dans les valeurs catholiques, préparant les étudiants aux défis futurs à travers :",
+                    "international_cert": "Certificat international",
+                    "modern_facilities": "Installations modernes",
+                    
+                    // Categories
+                    "categories": "Catégories",
+                    "classes": "Classes",
+                    "mpc_desc": "Mathématiques, physique, informatique",
+                    "mce_desc": "Mathématiques, informatique, économie",
+                    "pcb_desc": "Physique, Chimie, Biologie",
+                    "mcb_desc": "Mathématiques, Chimie, Biologie",
+                    "ordinary_level": "Niveau ordinaire",
+                    "senior_classes": "Sénior 1, Sénior 2, Sénior 3",
+                     
+                     // Team
+                     "staff": "Personnel",
+                    "leading_staff": "Personnel dirigeant",
+                    "head_mistress": "Directrice",
+                    "dean_studies": "Doyen des études",
+                    "dean_discipline": "Doyen de discipline",
+                    "bursar": "Trésorier",
+                    
+                    // Testimonial
+                    "our_students_say": "Nos étudiants disent!",
+                    "student": "Étudiant",
+                    "head_boy": "Préfet",
+                    "head_girl": "Préfète",
+                    "testimonial1": "\"Mon école a été un endroit formidable pour m'épanouir, tant sur le plan scolaire que personnel. Les professeurs sont toujours là pour me soutenir, que j'aie besoin d'aide pour mes études ou que je veuille simplement parler de quelque chose. J'ai eu la chance de participer à de nombreuses activités extrascolaires, comme le théâtre et le club scientifique, ce qui m'a vraiment aidée à découvrir mes passions. Je suis fière de faire partie d'une communauté qui est comme une seconde famille.\"",
+                    "testimonial2": "\"Être préfet en chef est un immense honneur et m'a donné une perspective unique sur l'école. Je constate de visu les efforts déployés par le personnel pour créer un environnement sûr, inclusif et stimulant pour nous, les élèves. Nous avons ici un fort sentiment d'appartenance à une communauté ; il ne s'agit pas seulement d'études, mais aussi de développement du caractère et des compétences en leadership. En tant que préfet en chef, j'ai eu le privilège de représenter mes camarades, d'écouter leurs idées et de collaborer avec le personnel pour améliorer encore notre école. Je suis fier de faire partie d'une école qui encourage non seulement l'excellence, mais aussi la bienveillance, le respect et l'intégrité. C'est un lieu où la voix de chacun compte.\"",
+                    "testimonial3": "\"Ce que j'aime le plus dans mon école, c'est le sentiment d'appartenance. Quels que soient vos centres d'intérêt, il y a toujours une place pour vous ici. Que vous soyez passionné de sport, d'art ou de musique, il y a un groupe pour chacun. J'ai eu d'incroyables occasions de participer à des compétitions sportives et de représenter l'école, et cela m'a beaucoup appris sur le travail d'équipe et la persévérance. J'ai le sentiment que l'école se soucie vraiment de la réussite de chaque élève, non seulement en classe, mais aussi dans la vie.\"",
+                    "testimonial4": "\"Être directrice d'école est une expérience que je n'oublierai jamais. Cela m'a permis de m'épanouir en tant que leader et en tant que personne. Notre école est formidable car elle ne se concentre pas uniquement sur la réussite scolaire, mais nous encourage également à être des individus épanouis. Les enseignants sont d'un grand soutien et se surpassent toujours pour nous aider à réussir. J'ai énormément appris sur le leadership, le travail d'équipe et la responsabilité grâce à mon rôle, et je suis fière de représenter une école qui valorise la bienveillance, l'ambition et l'inclusion. On se sent vraiment comme dans une famille ici, et je suis reconnaissante d'en faire partie.\"",
+    
+                    // Footer
+                    "quick_link": "Lien rapide",
+                    "contact_us": "Contactez-nous",
+                    "address": "Rwanda, Sud, Gisagara",
+                    "all_rights_reserved": "Tous droits r�serv�s",
+                    "help": "Aide",
+                    "top": "Haut"
+                },
+                rw: {
+                    // Navigation
+                    "home": "Ahabanza",
+                    "about": "Ibyerekeye",
+                    "login": "Kwinjira",
+                    "pages": "Ibigize",
+                    "our_team": "Itsinda ryacu",
+                    "testimonial": "Ibyemezo",
+                    "gallery": "Ishusho",
+                    "resources": "Inyandiko n'ibyatanzwe",
+                    "news": "Amakuru",
+                    "appointment": "Gusaba itariki",
+                    "contact": "Twandikire",
+                    "join_now": "Injira nonaha",
+                    "gallery.title": "Ishusho",
+                    "Online lessons": "Amasomo kuri interineti",
+            "breadcrumb.home": "Ahabanza",
+            "breadcrumb.pages": "Ibigize",
+            "breadcrumb.gallery": "Ishusho",
+            "gallery.our_gallery": "Ishusho Ryacu",
+            "gallery.image1": "Isomero ry'MPC",
+            "gallery.image2": "Isomero ry'PCB",
+            "gallery.image3": "Isomero ry'MCB",
+            "gallery.image4": "Urwego rw'isumbuye",
+            "gallery.image5": "Ibyiza",
+            "gallery.image6": "Inzu Nkuru",
+                    
+                    // Carousel
+                    "best_education": "Imyuga myiza",
+                    "best_performing_school": "Ishuri ry'icyiciro cya kabiri ryakira neza",
+                    "welcome_message": "Murakaza neza muri Kolegi Immaculee Conception-save aho dushyiraho ingingo mu gukora ibintu, ubwenge no kuyobora.",
+                    "read_more": "Soma byinshi",
+                    "best_online_courses": "Imyigishirize myiza kuri interineti",
+                    "get_educated_online": "Kwiga kuri interineti uva murugo",
+                    "holiday_packages": "Iyandikishe mu masomo yawe yo mu mikono ukoresheje ibyatanzwe byacu by'imikono twateguriye.",
+                    
+                    // Services
+                    "skilled_teachers": "Abarezi bafite ubuhanga",
+                    "skilled_teachers_desc": "Bazakurikira mu rugendo rwawe rw'amasomo kandi hamwe muzakora ibikorwa byinshi.",
+                    "online_classes": "Amasomo kuri interineti",
+                    "online_classes_desc": "Ibikorwa byagenwe bizagutera imbere utabona gusa ubushobozi bwo gukemura ibibazo ahubwo nanone ubwenge bwo gukora ibintu.",
+                    "project_learning": "Kwiga bikoresheje ibikorwa",
+                    "project_learning_desc": "Gukoresha ibyo wiga mu masomo yawe bikoresheje ibikorwa by'abanyeshuri.",
+                    "book_library": "Isomero ry'ibitabo",
+                    "book_library_desc": "Rifite ubumenyi bw'imyaka myinshi, ibya kera n'iby'ubu bizagufasha mu bikorwa byawe by'ishuri no mu bushakashatsi.",
+                    
+                    // About
+                    "about_us": "Ibyerekeye twe",
+                    "welcome_title": "Murakaza neza muri Kolegi Immaculee Conception-save",
+                    "about_desc1": "Kolegi Immaculee Conception ifite intego yo guteza imbere ubushobozi mu masomo no kwegura abanyeshuri mu muryango mwiza.",
+                    "about_desc2": "Intego yacu ni ugutanga amasomo y'ubuhanga bigendeye ku myizerere y'Abakristu, gutegura abanyeshuri kugirango bahangane n'ibibazo by'igihe kizaza bikoresheje:",
+                    "international_cert": "Icyemezo mpuzamahanga",
+                    "modern_facilities": "Ibikoresho bya moderne",
+                    
+                    // Categories
+                    "categories": "Ibyiciro",
+                    "classes": "Amasomo",
+                    "mpc_desc": "Matematiki, Fisiki, Informatiki",
+                    "mce_desc": "Matematiki, Informatiki, Ubukungu",
+                    "pcb_desc": "Fisiki, Kemu, Biyoloji",
+                    "mcb_desc": "Matematiki, Kemu, Biyoloji",
+                    "ordinary_level": "Urwego rwa S1-S3",
+                    "senior_classes": "Senior 1, Senior 2, Senior 3",
+    
+                    // Team
+                    "staff": "Abakozi",
+                    "leading_staff": "Abayobozi",
+                    "head_mistress": "Umuyobozi mukuru",
+                    "dean_studies": "Umuyobozi w'amasomo",
+                    "dean_discipline": "Umuyobozi w'imyitwarire",
+                    "bursar": "Umucungamari",
+                    
+                    // Testimonial
+                    "our_students_say": "Abanyeshuri bacu bavuga!",
+                    "student": "Umanyeshuri",
+                    "head_boy": "Umukuru w'abahungu",
+                    "head_girl": "Umukuru w'abakobwa",
+                    "testimonial1": "\"Ishuri ryanjye ryambereye ahantu heza cyane kuri njye gukura mumashuri no kugiti cyanjye. Abarimu bahora bahari kugirango banshigikire, niba nkeneye ubufasha mubyigisho byanjye cyangwa nshaka kuvuga kubintu runaka. Nagize amahirwe yo kwishora mubikorwa byinshi bidasanzwe, nkikinamico na club ya siyanse, yamfashije rwose kumenya ibyifuzo byanjye. Nishimiye kuba umwe mubaturage bumva ko ari umuryango wa kabiri.\"",
+                    "testimonial2": "\"Kuba Head Boy nicyubahiro kinini, kandi cyampaye icyerekezo cyihariye kumashuri. Ndabona imbona nkubone imbaraga abakozi bashyizeho mugushiraho ibidukikije bitekanye, byuzuye, kandi bikurura abanyeshuri. Dufite imyumvire ikomeye yabaturage hano ntabwo ireba abize gusa; bijyanye no kubaka imico nubuhanga bwo kuyobora. Nkumuyobozi wumuhungu, nagize amahirwe yo guhagararira abanyeshuri twiganaga, kumva ibitekerezo byabo, no gukorana nabakozi kugirango ishuri ryacu rirusheho kuba ryiza. Nejejwe no kuba ndi mu ishuri riteza imbere gusa kuba indashyikirwa ariko nanone ineza, kubahana, n'ubunyangamugayo. Nahantu ijwi rya buriwese rifite akamaro.\"",
+                    "testimonial3": "\"Icyo nkundira cyane ishuri ryanjye nukwiyumvamo. Ntakibazo icyo ukunda cyose, burigihe hariho umwanya wawe hano. Waba uri muri siporo, ubuhanzi, cyangwa umuziki, hari itsinda rya buri wese. Nagize amahirwe atangaje yo guhatanira siporo no guhagararira ishuri, kandi byanyigishije byinshi kubijyanye no gukorera hamwe no kwihangana. Ndumva ishuri ryita cyane kubitsinzi bya buri munyeshuri, atari mwishuri gusa ahubwo mubuzima.\"",
+                    "testimonial4": "\"Kuba Umukobwa wumutwe nubunararibonye ntazigera nibagirwa. Byampaye amahirwe yo gukura nk'umuyobozi ndetse n'umuntu. Ishuri ryacu riratangaje kuko ntabwo ryibanda kubitsindira gusa ahubwo binadutera inkunga yo kuba abantu buzuye. Abarimu baradushyigikiye cyane kandi burigihe bajya hejuru kugirango badufashe gutsinda. Nize byinshi ku buyobozi, gukorera hamwe, hamwe n'inshingano binyuze mu nshingano zanjye, kandi ndumva nishimiye guhagararira ishuri riha agaciro ineza, kwifuza, no kutabogama. Nukuri numva ari umuryango hano, kandi nshimishijwe no kubigiramo uruhare.\"",
+                    
+                    
+                    // Footer
+                    "quick_link": "Ihuza ryihuse",
+                    "contact_us": "Twandikire",
+                    "address": "Rwanda, Amajyepfo, Gisagara",
+                    "all_rights_reserved": "Byose birabanzwe",
+                    "help": "Ubufasha",
+                    "top": "Hejuru"
+                }
+            };
+    
+            // Function to set the language
+            function setLanguage(lang) {
+                if (!translations[lang]) return;
+                
+                // Save the selected language in localStorage
+                localStorage.setItem('selectedLanguage', lang);
+                
+                // Update the current language display
+                document.getElementById('currentLanguage').textContent = 
+                    lang === 'en' ? 'English' : 
+                    lang === 'fr' ? 'Français' : 'Kinyarwanda';
+                
+                // Update the page title
+                document.title = lang === 'en' ? 'Gallery' : 
+                               lang === 'fr' ? 'Collège Immaculèe Conception-save' : 
+                               'Kolegi Immaculee Conception-save';
+                
+                // Update all translatable elements
+                document.querySelectorAll('[data-i18n]').forEach(element => {
+                    const key = element.getAttribute('data-i18n');
+                    if (translations[lang][key]) {
+                        element.textContent = translations[lang][key];
+                    }
+                });
+                
+                // Update the html lang attribute
+                document.documentElement.lang = lang;
+            }
+    
+            // Initialize the language
+            function initializeLanguage() {
+                // Check for saved language preference
+                const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+                setLanguage(savedLanguage);
+                
+                // Set up language selector click handlers
+                document.querySelectorAll('.language-select').forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const lang = this.getAttribute('data-lang');
+                        setLanguage(lang);
+                    });
+                });
+            }
+    
+            // Wait for DOM to be fully loaded
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initializeLanguage);
+            } else {
+                initializeLanguage();
+            }
+        </script>
+

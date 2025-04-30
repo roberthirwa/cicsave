@@ -1,0 +1,338 @@
+---
+title: News & Updates
+layout: 'base.njk'
+---
+
+
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body and Font */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo img {
+            height: 50px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            color: #ff6347;
+        }
+
+        /* Main Content */
+        main {
+            padding: 20px;
+        }
+
+        #home {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        #home h1 {
+            font-size: 2.5em;
+            color: #333;
+        }
+
+        #home p {
+            font-size: 1.2em;
+            color: #666;
+        }
+
+        #news {
+            margin-bottom: 40px;
+        }
+
+        #news h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .news-article {
+            background-color: #fff;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .news-article img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .news-article h3 {
+            font-size: 1.8em;
+            color: #333;
+        }
+
+        .news-article p {
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        .news-article a {
+            text-decoration: none;
+            color: #00e1ff;
+            font-weight: bold;
+        }
+
+        .news-article a:hover {
+            text-decoration: underline;
+        }
+
+        #events ul {
+            list-style: none;
+        }
+
+        #events li {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+    </style>
+
+
+<!-- Header Start -->
+<div class="container-fluid bg-primary py-5 mb-5 page-header">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 text-center">
+                <h1 class="display-3 text-white animated slideInDown" data-i18n="news.title">School News</h1>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb justify-content-center">
+                        <li class="breadcrumb-item"><a class="text-white" href="../index.html" data-i18n="breadcrumb.home">Home</a></li>
+                        <li class="breadcrumb-item"><a class="text-white" href="/news/" data-i18n="breadcrumb.pages">Pages</a></li>
+                        <li class="breadcrumb-item text-white active" aria-current="page" data-i18n="breadcrumb.news">News</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Header End -->
+
+<main>
+    <section id="home">
+        <h1 data-i18n="news.welcome">Welcome to Our School News</h1>
+        <p data-i18n="news.welcome_sub">Stay updated with the latest happenings at our school!</p>
+    </section>
+
+    <section id="news">
+        <h2 data-i18n="news.latest">Latest News</h2>
+        {%- for post in collections.post | reverse -%}
+        <article class="news-article">
+            <img src="{{ post.data.image}}" data-i18n-alt="{{ post.data.imgAlt }}" alt="New Sports Facility">
+            <h3 data-i18n="news.sports_facility_title">{{ post.data.title }}</h3>
+            <p data-i18n="news.sports_facility_text">{{ post.data.description }}</p>
+            <a href="{{ post.url }}" data-i18n="news.read_more">Read more</a>
+        </article>
+        {%- endfor-%}
+    </section>
+
+    <section id="events">
+        <h2 data-i18n="events.upcoming">Upcoming Events</h2>
+        <ul>
+            <li data-i18n="events.april5">April 5th: Science Fair</li>
+            <li data-i18n="events.april10">April 10th: Parent-Teacher Conference</li>
+            <li data-i18n="events.april15">April 15th: Annual Sports Day</li>
+        </ul>
+    </section>
+</main>
+
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i><span data-i18n="top">Top</span></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+        <!-- Language Translation Script -->
+        <script>
+            // Language translations
+            const translations = {
+                en: {
+                    // Navigation
+                    "home": "Home",
+                    "about": "About",
+                    "login": "Login",
+                    "pages": "Pages",
+                    "our_team": "Our Team",
+                    "testimonial": "Testimonial",
+                    "gallery": "Gallery",
+                    "resources": "Notes and Exercises",
+                    "news": "News",
+                    "appointment": "Request appointment",
+                    "contact": "Contact",
+                    "join_now": "Join Now",
+                    "news.title": "School News",
+        
+                    // Footer
+                    "quick_link": "Quick Link",
+                    "contact_us": "Contact Us",
+                    "address": "Rwanda, South, Gisagara",
+                    "all_rights_reserved": "All Rights Reserved",
+                    "help": "Help",
+                    "top": "Top"
+                },
+                fr: {
+                    // Navigation
+                    "home": "Accueil",
+                    "about": "Àpropos",
+                    "login": "Connexion",
+                    "pages": "Pages",
+                    "our_team": "Notre_équipe",
+                    "testimonial": "Témoignage",
+                    "gallery": "Galerie",
+                    "resources": "Notes et exercices",
+                    "news": "Nouvelles",
+                    "appointment": "Demande de rendez-vous",
+                    "contact": "Contact",
+                    "join_now": "Inscrivez-vous maintenant",
+                    "news.title": "Actualités Scolaires",
+                    
+                    // Footer
+                    "quick_link": "Lien rapide",
+                    "contact_us": "Contactez-nous",
+                    "address": "Rwanda, Sud, Gisagara",
+                    "all_rights_reserved": "Tous droits r�serv�s",
+                    "help": "Aide",
+                    "top": "Haut"
+                },
+                rw: {
+                    // Navigation
+                    "home": "Ahabanza",
+                    "about": "Ibyerekeye",
+                    "login": "Kwinjira",
+                    "pages": "Ibigize",
+                    "our_team": "Itsinda ryacu",
+                    "testimonial": "Ibyemezo",
+                    "gallery": "Ishusho",
+                    "resources": "Inyandiko n'ibyatanzwe",
+                    "news": "Amakuru",
+                    "appointment": "Gusaba itariki",
+                    "contact": "Twandikire",
+                    "join_now": "Injira nonaha",
+                    "news.title": "Amakuru y'Ishuri",
+                    
+                    // Footer
+                    "quick_link": "Ihuza ryihuse",
+                    "contact_us": "Twandikire",
+                    "address": "Rwanda, Amajyepfo, Gisagara",
+                    "all_rights_reserved": "Byose birabanzwe",
+                    "help": "Ubufasha",
+                    "top": "Hejuru"
+                }
+            };
+    
+            // Function to set the language
+            function setLanguage(lang) {
+                if (!translations[lang]) return;
+                
+                // Save the selected language in localStorage
+                localStorage.setItem('selectedLanguage', lang);
+                
+                // Update the current language display
+                document.getElementById('currentLanguage').textContent = 
+                    lang === 'en' ? 'English' : 
+                    lang === 'fr' ? 'Français' : 'Kinyarwanda';
+                
+                // Update the page title
+                document.title = lang === 'en' ? 'News & Updates' : 
+                               lang === 'fr' ? 'Collège Immaculèe Conception-save' : 
+                               'Kolegi Immaculee Conception-save';
+                
+                // Update all translatable elements
+                document.querySelectorAll('[data-i18n]').forEach(element => {
+                    const key = element.getAttribute('data-i18n');
+                    if (translations[lang][key]) {
+                        element.textContent = translations[lang][key];
+                    }
+                });
+                
+                // Update the html lang attribute
+                document.documentElement.lang = lang;
+            }
+    
+            // Initialize the language
+            function initializeLanguage() {
+                // Check for saved language preference
+                const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+                setLanguage(savedLanguage);
+                
+                // Set up language selector click handlers
+                document.querySelectorAll('.language-select').forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const lang = this.getAttribute('data-lang');
+                        setLanguage(lang);
+                    });
+                });
+            }
+    
+            // Wait for DOM to be fully loaded
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initializeLanguage);
+            } else {
+                initializeLanguage();
+            }
+        </script>
+
+  
